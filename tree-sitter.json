@@ -1,0 +1,33 @@
+{
+  "grammars": [
+    {
+      "name": "agar",
+      "camelcase": "Agar",
+      "scope": "source.agar",
+      "path": ".",
+      "file-types": null,
+      "injection-regex": "^agar$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Agar grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Tomasz Mazur"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/AHGIJMKLKKZNPJKQR/agar-treesitter"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}

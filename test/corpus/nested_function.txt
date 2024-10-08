@@ -1,0 +1,13 @@
+let f: (Int) -> Int = [a: Int] -> Int => (
+  let g: (
+    (Int, () -> (Bool) -> Bool) -> Bool,
+    Bool,
+    () -> Unit,
+  ) -> (
+    (Int, () -> (() -> Unit)) -> Int
+  ) = [
+    a: (Int, () -> ((Bool) -> Bool)) -> Bool,
+    b: Bool,
+    c: (() -> Unit)
+  ] -> () -> () -> (Int) => g
+)

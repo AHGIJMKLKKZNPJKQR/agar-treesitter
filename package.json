@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "tree-sitter-cli": "^0.24.2"
+  },
+  "scripts": {
+    "parse": "tree-sitter parse",
+    "test": "tree-sitter test",
+    "generate": "tree-sitter generate"
+  }
+}
