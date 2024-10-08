@@ -1,4 +1,4 @@
-2; 3;
+2 ; 3  ;
 let f: (Int, Int) -> Bool = [a: Int, b: Int] -> Bool => (
   2; true
 );
