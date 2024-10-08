@@ -1,1 +1,2 @@
-let f: () -> Int = [a: Int] -> Int => a
+let f: () -> Int = [a: Int] -> Int => a;
+f[]; f [ 1, 2, true ]

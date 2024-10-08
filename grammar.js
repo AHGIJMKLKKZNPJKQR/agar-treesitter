@@ -14,6 +14,7 @@ module.exports = grammar({
     source_file: $ => $._expression,
     _expression: $ => choice(
       $.function_definition,
+      $.application,
       $._literal,
       $.group,
       $.identifier,
@@ -22,6 +23,13 @@ module.exports = grammar({
     group: $ => prec.left(
       10,
       seq($._expression, ';', $._expression)
+    ),
+    application: $ => seq(
+      $.identifier,
+      '[',
+      repeat(seq($._expression, ',')),
+      optional($._expression),
+      ']',
     ),
     function_definition: $ => seq(
       'let',

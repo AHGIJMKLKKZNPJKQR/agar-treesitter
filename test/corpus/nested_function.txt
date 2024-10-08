@@ -9,5 +9,5 @@ let f: (Int) -> Int = [a: Int] -> Int => (
     a: (Int, () -> ((Bool) -> Bool)) -> Bool,
     b: Bool,
     c: (() -> Unit)
-  ] -> () -> () -> (Int) => g
+  ] -> () -> () -> (Int) => g[2, true, false]
 )
