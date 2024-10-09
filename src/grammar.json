@@ -1,6 +1,7 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "agar",
+  "word": "identifier",
   "rules": {
     "source_file": {
       "type": "SYMBOL",
@@ -81,8 +82,12 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "FIELD",
+          "name": "function",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         },
         {
           "type": "STRING",
@@ -130,8 +135,12 @@
           "value": "let"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         },
         {
           "type": "CHOICE",
@@ -145,7 +154,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "function_type"
+                  "name": "_function_type"
                 }
               ]
             },
@@ -159,24 +168,36 @@
           "value": "="
         },
         {
-          "type": "SYMBOL",
-          "name": "parameter_list"
+          "type": "FIELD",
+          "name": "parameters",
+          "content": {
+            "type": "SYMBOL",
+            "name": "parameter_list"
+          }
         },
         {
           "type": "STRING",
           "value": "->"
         },
         {
-          "type": "SYMBOL",
-          "name": "_type"
+          "type": "FIELD",
+          "name": "return_type",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_type"
+          }
         },
         {
           "type": "STRING",
           "value": "=>"
         },
         {
-          "type": "SYMBOL",
-          "name": "_expression"
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
         }
       ]
     },
@@ -247,7 +268,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "function_type"
+          "name": "_function_type"
         },
         {
           "type": "SEQ",
@@ -285,7 +306,7 @@
         }
       ]
     },
-    "function_type": {
+    "_function_type": {
       "type": "PREC_RIGHT",
       "value": 50,
       "content": {
@@ -301,7 +322,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "return_type"
+            "name": "_type"
           }
         ]
       }
@@ -346,10 +367,6 @@
           "value": ")"
         }
       ]
-    },
-    "return_type": {
-      "type": "SYMBOL",
-      "name": "_type"
     },
     "_literal": {
       "type": "CHOICE",

@@ -5,6 +5,8 @@
   "scripts": {
     "parse": "tree-sitter parse",
     "test": "tree-sitter test",
-    "generate": "tree-sitter generate"
+    "generate": "tree-sitter generate",
+    "highlight": "tree-sitter highlight",
+    "tree-sitter": "tree-sitter"
   }
 }

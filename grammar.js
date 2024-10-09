@@ -9,7 +9,7 @@
 
 module.exports = grammar({
   name: "agar",
-
+  word: $ => $.identifier,
   rules: {
     source_file: $ => $._expression,
     _expression: $ => choice(
@@ -25,7 +25,7 @@ module.exports = grammar({
       seq($._expression, ';', $._expression)
     ),
     application: $ => seq(
-      $.identifier,
+      field('function', $.identifier),
       '[',
       repeat(seq($._expression, ',')),
       optional($._expression),
@@ -33,14 +33,14 @@ module.exports = grammar({
     ),
     function_definition: $ => seq(
       'let',
-      $.identifier,
-      optional(seq(':', $.function_type)),
+      field('name', $.identifier),
+      optional(seq(':', $._function_type)),
       '=',
-      $.parameter_list,
+      field('parameters', $.parameter_list),
       '->',
-      $._type,
+      field('return_type', $._type),
       '=>',
-      $._expression
+      field('body', $._expression),
     ),
     parameter_list: $ => seq(
       '[',
@@ -55,7 +55,7 @@ module.exports = grammar({
     ),
     _type: $ => choice(
       $.primitive_type,
-      $.function_type,
+      $._function_type,
       seq('(', $._type, ')'),
     ),
     primitive_type: $ => choice(
@@ -63,9 +63,9 @@ module.exports = grammar({
       'Unit',
       'Int',
     ),
-    function_type: $ => prec.right(
+    _function_type: $ => prec.right(
       50,
-      seq($.argument_type_list, '->', $.return_type)
+      seq($.argument_type_list, '->', $._type)
     ),
     argument_type_list: $ => seq(
       '(',
@@ -73,7 +73,6 @@ module.exports = grammar({
       optional($._type),
       ')',
     ),
-    return_type: $ => $._type,
     _literal: $ => choice(
       $.number,
       $.boolean,
